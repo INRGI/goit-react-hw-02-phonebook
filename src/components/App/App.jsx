@@ -1,3 +1,4 @@
+import ContactForm from "components/ContactForm";
 import { Component } from "react";
 
 export class App extends Component{
@@ -10,7 +11,7 @@ export class App extends Component{
     return (
       <div>
         <h1>Phonebook</h1>
-        {/* <ContactForm/> */}
+        <ContactForm/>
 
         <h2>Contacts</h2>
         {/* <Filter/> */}
