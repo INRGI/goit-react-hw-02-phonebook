@@ -3,7 +3,6 @@ import { Component } from "react";
 
 class ContactForm extends Component{
     state = {
-        contacts: [],
         name: '',
         number: ''
     };
@@ -13,22 +12,49 @@ class ContactForm extends Component{
     
     handleSubmit = event => {
         event.preventDefault();
-
+        this.props.onSubmit({name: this.state.name, number: this.state.number})
         this.reset();
     };
 
     handleChange = event => {
         const { name, value } = event.target;
         this.setState({ [name]: value });
-    }
+    };
+
+    reset = () => {
+        this.setState({
+            name: '',
+            number: ''
+        });
+    };
 
     render() {
 
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="name" onChange={this.handleChange} required />
-                    <input type="tel" name="number" required />
+                    <label htmlFor={this.nameId}>
+                        Name
+                        <input
+                            type="text"
+                            name="name"
+                            value={this.state.name}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </label>
+                    
+                    <label htmlFor={this.numberId}>
+                        Number
+                        <input
+                            type="tel"
+                            name="number"
+                            value={this.state.number}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </label>
+                    
                     <button type='submit'>Add contact</button>
                 </form>
             </div>
