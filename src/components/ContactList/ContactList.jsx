@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts }) => (
     <ul>
         {contacts.map(contact => (
             <li key={contact.id}>
@@ -8,7 +8,7 @@ const ContactList = ({ contacts }) => {
             </li>
         ))}
     </ul>
-};
+);
 
 ContactList.propTypes = {
     contacts: PropTypes.array.isRequired,
