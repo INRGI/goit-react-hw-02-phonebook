@@ -3,14 +3,15 @@ import ContactList from "components/ContactList";
 import Filter from "components/Filter";
 import { nanoid } from "nanoid";
 import { Component } from "react";
+import { ContactTitle, Container, EmptyTitle, PhoneTitle } from "./App.styled";
 
 export class App extends Component{
   state = {
     contacts: [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
     ],
     filter: ''
   };
@@ -56,14 +57,24 @@ export class App extends Component{
     const visibleContacts = this.getVisibleContacts();
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <PhoneTitle>Phonebook</PhoneTitle>
         <ContactForm onSubmit={this.addContact} />
 
-        <h2>Contacts</h2>
+        <ContactTitle>Contacts</ContactTitle>
+        {this.state.contacts.length > 0 ? (
         <Filter value={filter} onFilterChange={this.filterChange}/>
-        <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact} />
-      </div>
+        ) : (
+          <EmptyTitle>Your phonebook is empty.</EmptyTitle>
+        )}
+        {this.state.contacts.length > 0 && (
+          <ContactList
+            contacts={visibleContacts}
+            onDeleteContact={this.deleteContact}
+          />
+        )}
+        
+      </Container>
     );
   };
 };
