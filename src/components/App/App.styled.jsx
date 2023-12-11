@@ -11,6 +11,7 @@ export const PhoneTitle = styled.h1`
     font-weight: 300;
     color: hsl(230, 100%, 95%);
     animation: lights 5s 750ms linear infinite;
+    margin-bottom: 30px;
     @keyframes lights {
     0% {
         color: hsl(230, 40%, 80%);
@@ -65,6 +66,7 @@ export const ContactTitle = styled.h2`
     font-weight: 300;
     color: hsl(230, 100%, 95%);
     animation: lights 5s 750ms linear infinite;
+    margin-bottom: 15px;
     @keyframes lights {
     0% {
         color: hsl(230, 40%, 80%);
